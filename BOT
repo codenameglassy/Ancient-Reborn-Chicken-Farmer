@@ -1,0 +1,91 @@
+#RequireAdmin
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Outfile=Ancient Reborn Bot V.1 ALPHA.Exe
+#AutoIt3Wrapper_Outfile_x64=Ancient Reborn Bot V.1 ALPHA x64.Exe
+#AutoIt3Wrapper_UseUpx=y
+#AutoIt3Wrapper_Run_Tidy=y
+#AutoIt3Wrapper_Run_Au3Stripper=y
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
+
+HotKeySet('f', "ExitProgram")
+
+Func ExitProgram()
+	Exit
+EndFunc   ;==>ExitProgram
+
+
+WinActivate('LDPlayer')
+
+While (1)
+
+
+	findCH()
+	ATK()
+	ClickLoot()
+
+WEnd
+
+
+Func findCH()
+	$CH = PixelSearch(450, 133, 1011, 508, 0xFFFFFF, 5)
+	If Not (@error) Then
+		;ControlClick('LDPlayer', '', '', 'left', 1, $CH[0], $CH[1])
+		MouseClick('primary', $CH[0], $CH[1], 1, 10)
+		$CH = True
+		While ($CH)
+			$isCH = PixelSearch(713, 259, 846, 478, 0x05FCFF, 5)
+			If Not (@error) Then
+			Else
+				$CH = False
+			EndIf
+		WEnd
+	EndIf
+	Sleep(2000)
+EndFunc   ;==>findCH
+
+Func ATK()
+	$A = PixelSearch(853, 422, 855, 424, 0x05FCFF, 5)
+	If Not (@error) Then
+		;ControlClick('LDPlayer', '', '', 'left', 1, $A[0], $A[1])
+		MouseClick('primary', $A[0], $A[1], 1, 10)
+		$A = True
+		While ($A)
+			$isA = PixelSearch(853, 422, 855, 424, 0x05FCFF, 5)
+			If Not (@error) Then
+			Else
+				$A = False
+			EndIf
+		WEnd
+	EndIf
+	Sleep(2000)
+EndFunc   ;==>ATK
+
+Func ClickLoot()
+
+	$CL = PixelSearch(450, 133, 1011, 508, 0x815827, 5)
+	If Not (@error) Then
+		;ControlClick('LDPlayer', '', '', 'left', 1, $CL[0], $CL[1])
+		MouseClick('primary', $CL[0], $CL[1], 1, 10)
+		Sleep(2000)
+		MouseClick('primary', 858, 390, 1, 10)
+		Sleep(2000)
+		MouseClick('primary', 452, 553, 1, 10)
+		Sleep(2000)
+
+		$CL = True
+		While ($CL)
+			$isCL = PixelSearch(713, 259, 846, 478, 0x815827, 5)
+			If Not (@error) Then
+			Else
+				$CL = False
+			EndIf
+		WEnd
+	EndIf
+	Sleep(2000)
+EndFunc   ;==>ClickLoot
+
+Func Findloot()
+
+EndFunc   ;==>Findloot
+
+
